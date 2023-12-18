@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CapitulosController;
+use App\Http\Controllers\PalabrasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [CapitulosController::class, 'index'])->name('capitulos');
+Route::get('/capitulos/{capitulo}', [CapitulosController::class, 'mostrarPalabras'])->name('mostrar_palabras');
+
+Route::get('/dashboard', [CapitulosController::class, 'mostrarCount'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::post('/capitulos/store', [CapitulosController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('capitulos.store');
+
+Route::get('/palabras', [PalabrasController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('palabras');
+
+Route::post('/importar-palabras', [PalabrasController::class, 'importPalabras'])
+    ->middleware(['auth', 'verified'])
+    ->name('importar.palabras');
+
+Route::post('/importar-audio', [PalabrasController::class, 'importarAudio'])
+    ->middleware(['auth', 'verified'])
+    ->name('importarAudio');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +51,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
