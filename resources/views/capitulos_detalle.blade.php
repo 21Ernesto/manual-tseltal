@@ -85,20 +85,14 @@
                                             <span class="lg:text-2xl">{{ $palabra->traduccion }}</span>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <span class="lg:text-2xl">{{ $palabra->audio }}</span>
-
                                             <div class="flex items-center mt-3">
-                                                <?php
-                                                // Reemplazar ' por ´ o _ en el nombre del archivo
-                                                $nombreArchivo = str_replace(["'", '´', '_'], "'", $palabra->audio);
-                                                $urlAudio = asset('audios/' . $nombreArchivo);
-                                                ?>
-                                                <span>{{ $urlAudio }}</span>
-                                                <audio src="{{ $urlAudio }}" id="player{{ $palabra->id }}"
-                                                    type="audio/mpeg" preload="auto"></audio>
+                                                <audio src="{{ asset('audios/' . $palabra->audio) }}"
+                                                    id="player{{ $palabra->id }}" type="audio/mpeg" preload="auto"></audio>
+    
                                                 <button onclick="playAudio('{{ $palabra->id }}')"
-                                                    class="bg-custom_app w-8 h-8 p-2 rounded ml-2 focus:outline-none">
+                                                    class="bg-custom_app w-10 h-10 p-2 rounded ml-2 focus:outline-none">
                                                     <i class="fas fa-play text-white"></i>
+    
                                                 </button>
                                             </div>
                                         </td>

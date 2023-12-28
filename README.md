@@ -70,5 +70,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Comando util
 
 Get-ChildItem "*_*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace '_', "'") }
+Get-ChildItem "*’*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "’", "'") }
 
 Reemplezar cualquier caracter de cualquier achivo masivamente
