@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [CapitulosController::class, 'index'])->name('capitulos');
-Route::get('/capitulos/{capitulo}', [CapitulosController::class, 'mostrarPalabras'])->name('mostrar_palabras');
+Route::get('/capitulos/{id}', [CapitulosController::class, 'mostrarPalabras'])->name('mostrar_palabras');
 
 Route::get('/dashboard', [CapitulosController::class, 'mostrarCount'])
     ->middleware(['auth', 'verified'])

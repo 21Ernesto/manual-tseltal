@@ -64,3 +64,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+## Comando util
+
+Get-ChildItem "*_*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace '_', "'") }
+
+Reemplezar cualquier caracter de cualquier achivo masivamente

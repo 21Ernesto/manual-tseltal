@@ -1,22 +1,21 @@
-// BUSCAR CORREOS
 function search_palabras() {
-    let input, filter, table, tr, tdName, tdEmail, i, txtValueName, txtValueEmail;
+    let input, filter, table, tr, tdTseltal, tdEspaniol, i, txtValueTseltal, txtValueEspaniol;
     input = document.getElementById("search_palabras");
     filter = input.value.toUpperCase();
     table = document.querySelector("table");
     tr = table.getElementsByTagName("tr");
 
     for (i = 1; i < tr.length; i++) {
-        tdName = tr[i].getElementsByTagName("td")[0];
-        tdEmail = tr[i].getElementsByTagName("td")[1];
+        tdTseltal = tr[i].getElementsByTagName("td")[0];
+        tdEspaniol = tr[i].getElementsByTagName("td")[1];
 
-        if (tdName && tdEmail) {
-            txtValueName = tdName.textContent || tdName.innerText;
-            txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+        if (tdTseltal && tdEspaniol) {
+            txtValueTseltal = tdTseltal.textContent || tdTseltal.innerText;
+            txtValueEspaniol = tdEspaniol.textContent || tdEspaniol.innerText;
 
             if (
-                txtValueName.toUpperCase().indexOf(filter) > -1 ||
-                txtValueEmail.toUpperCase().indexOf(filter) > -1
+                txtValueTseltal.toUpperCase().indexOf(filter) > -1 ||
+                txtValueEspaniol.toUpperCase().indexOf(filter) > -1
             ) {
                 tr[i].style.display = "";
             } else {
@@ -26,7 +25,7 @@ function search_palabras() {
     }
 }
 
-document.getElementById("search_palabras").addEventListener("input", function() {
+document.getElementById("search_palabras").addEventListener("input", function () {
     const query = this.value.trim();
 
     if (query.length === 0) {

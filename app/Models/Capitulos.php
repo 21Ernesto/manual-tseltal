@@ -11,6 +11,7 @@ class Capitulos extends Model
     use HasFactory;
 
     protected $fillable = [
+        'leccion',
         'name'
     ];
 }

@@ -78,10 +78,17 @@
 
                     <div class="p-4">
                         <div class="mb-4">
+                            <label for="leccion"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Lección:</label>
+                            <input type="text" required name="leccion" id="leccion" placeholder="Ej.: 1"
+                                class="mt-1 p-2 w-full border rounded-md focus:ring-2 focus:ring-blue-500">
+
+                        </div>
+                        <div class="mb-4">
                             <label for="name"
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
                             <input type="text" required name="name" id="name"
-                                class="mt-1 p-2 w-full border rounded-md">
+                                placeholder="Ej.: Guía de Pronunciación" class="mt-1 p-2 w-full border rounded-md">
                         </div>
 
                         <div class="flex justify-end">
@@ -155,8 +162,9 @@
 
                         <div class="mb-4">
                             <label for="audioFiles"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Seleccione los audios</label>
-                            <input type="file" name="audioFiles[]" id="audioFiles"  accept=".mp3, .wav" multiple
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Seleccione los
+                                audios</label>
+                            <input type="file" name="audioFiles[]" id="audioFiles" accept=".mp3, .wav" multiple
                                 class="mt-1 p-2 w-full border rounded-md">
                         </div>
 

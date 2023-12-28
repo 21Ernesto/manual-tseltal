@@ -31,10 +31,12 @@ class CapitulosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'leccion' => 'required|string|max:50',
             'name' => 'required|string|max:255',
         ]);
 
         Capitulos::create([
+            'leccion' => $request->input('leccion'),
             'name' => $request->input('name'),
         ]);
 
@@ -73,11 +75,11 @@ class CapitulosController extends Controller
         //
     }
 
-    public function mostrarPalabras($name)
+    public function mostrarPalabras($leccion)
     {
         $capitulos = Capitulos::all();
-        $ca = Capitulos::where('name', $name)->firstOrFail();
-        $palabras = Palabras::where('capitulo_id', $ca->id)->get();
+        $ca = Capitulos::where('leccion', $leccion)->firstOrFail();
+        $palabras = Palabras::where('capitulo_id', $ca->leccion)->get();
 
         return view('capitulos_detalle', compact('palabras', 'capitulos', 'ca'));
     }
