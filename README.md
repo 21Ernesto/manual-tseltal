@@ -73,3 +73,15 @@ Get-ChildItem "*_*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace
 Get-ChildItem "*’*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "’", "'") }
 
 Reemplezar cualquier caracter de cualquier achivo masivamente
+
+
+
+
+Get-ChildItem "*á*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace 'á', "a") }
+Get-ChildItem "*é*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "é", "e") }
+Get-ChildItem "*í*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "í", "i") }
+Get-ChildItem "*ó*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "ó", "o") }
+Get-ChildItem "*ú*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "ú", "u") }
+
+
+Get-ChildItem | ForEach-Object { $newName = $_.Name -replace '[oóòóôõöōŏőơ]','o' Rename-Item $_.FullName $newName }
