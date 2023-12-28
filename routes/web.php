@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});
 
 Route::get('/', [CapitulosController::class, 'index'])->name('capitulos');
 Route::get('/capitulos/{id}', [CapitulosController::class, 'mostrarPalabras'])->name('mostrar_palabras');
