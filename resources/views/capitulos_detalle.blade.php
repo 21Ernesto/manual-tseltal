@@ -2,20 +2,21 @@
 
 @section('main')
     <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 rounded-b-lg">
-        <div class="p-4 lg:text-start text-center">
+        <div class="p-4 text-center">
             <div>
-                <span class="font-bold text-sm">Autor:</span>
+                <a href="{{ route('capitulos') }}" class="lg:text-xl text-lg font-semibold dark:text-white">
+                    Manual de tseltal de Guaquitepec
+                </a>
+            </div>
+            <div>
+                <span class="font-bold text-sm">Autores:</span>
                 <span class="text-sm">Gilles Polian, Sebastián Aguilar Méndez</span>
             </div>
             <div class="mb-1">
                 <span class="font-bold text-sm">Contacto:</span>
                 <span class="text-sm">documentaciontseltal@gmail.com</span>
             </div>
-            <a href="#" class="block lg:text-xl text-lg font-semibold dark:text-white">
-                Manual de tseltal de Guaquitepec
-            </a>
         </div>
-
     </nav>
 
     <div class="w-full mx-auto p-4 md:p-6 lg:p-8">
@@ -30,6 +31,7 @@
                     {{ $capitulo->leccion }}
                 </a>
             @empty
+                <p>No hay lecciones disponibles</p>
             @endforelse
         </div>
     </div>
@@ -67,10 +69,6 @@
 
                     <label id="estadoReproduccion" class="lg:mt-0 mt-2"></label>
                 </div>
-
-
-
-
 
                 <div class="relative overflow-x-auto">
                     <div class="shadow overflow-hidden sm:rounded-lg">
@@ -121,8 +119,6 @@
         </div>
     </div>
 
-
-
     <script>
         function playAudio(id) {
             var audio = document.getElementById('player' + id);
@@ -147,7 +143,7 @@
             var isPaused = false;
             var audioElement;
             var posicionReproduccion = 0;
-            var palabraActual; 
+            var palabraActual;
 
             function reproducirSiguiente() {
                 if (index < palabras.length && !isPaused) {

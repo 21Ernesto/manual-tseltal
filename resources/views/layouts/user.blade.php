@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     
-    @laravelPWA
+    {{-- @laravelPWA --}}
 </head>
 
 <body class="font-sans antialiased">

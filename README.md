@@ -84,6 +84,16 @@ Get-ChildItem "*ó*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -repla
 Get-ChildItem "*ú*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "ú", "u") }
 
 
+Get-ChildItem "?" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "?", "") }
+Get-ChildItem "¿" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "¿", "") }
+
+Get-ChildItem "*!*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "!", "") }
+Get-ChildItem "*¡*" | ForEach-Object { Rename-Item $_.FullName ($_.Name -replace "¡", "") }
+
 UPDATE palabras SET audio = REPLACE(audio, '?', "");
 UPDATE palabras SET audio = REPLACE(audio, '¿', "");
 UPDATE palabras SET ortografia = REPLACE(ortografia, '’', "'");
+
+
+UPDATE palabras SET audio = REPLACE(audio, '!', "");
+UPDATE palabras SET audio = REPLACE(audio, '¡', "");
