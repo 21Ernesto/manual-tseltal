@@ -1,5 +1,7 @@
 var staticCacheName = "pwa-v" + new Date().getTime();
+var dynamicCacheName = "pwa-dynamic-v" + new Date().getTime();
 var filesToCache = [
+    '/',
     '/offline',
     '/css/app.css',
     '/js/app.js',
@@ -24,29 +26,36 @@ self.addEventListener("install", event => {
     )
 });
 
-// Clear cache on activate
+// Clear old caches on activate
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames
                     .filter(cacheName => (cacheName.startsWith("pwa-")))
-                    .filter(cacheName => (cacheName !== staticCacheName))
+                    .filter(cacheName => (cacheName !== staticCacheName && cacheName !== dynamicCacheName))
                     .map(cacheName => caches.delete(cacheName))
             );
         })
     );
 });
 
-// Serve from Cache
+// Serve from Cache, update dynamic cache
 self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                return response || fetch(event.request);
+                return response || fetch(event.request).then(fetchResponse => {
+                    return caches.open(dynamicCacheName).then(cache => {
+                        cache.put(event.request.url, fetchResponse.clone());
+                        return fetchResponse;
+                    });
+                });
             })
             .catch(() => {
-                return caches.match('offline');
+                if (event.request.url.includes('.html')) {
+                    return caches.match('/offline');
+                }
             })
     )
 });

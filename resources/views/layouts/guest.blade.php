@@ -26,7 +26,16 @@
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
+            <div class="fixed w-full bottom-0 text-center p-4 bg-white dark:bg-gray-800 mt-10">
+                @php
+                    $companyName = 'DIM3NSOFT';
+                    $companyUrl = 'https://dim3nsoft.com.mx/';
+                @endphp
+            
+                <x-info-company :companyName="$companyName" :companyUrl="$companyUrl" />
+            </div>
         </div>
+        
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     </body>

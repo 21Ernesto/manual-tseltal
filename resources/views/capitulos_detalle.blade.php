@@ -70,53 +70,60 @@
                     <label id="estadoReproduccion" class="lg:mt-0 mt-2"></label>
                 </div>
 
-                <div class="relative overflow-x-auto">
-                    <div class="shadow overflow-hidden sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="">
+                    <div class="shadow overflow-x-scroll sm:rounded-lg">
+                        <table
+                            class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 whitespace-no-wrap">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-4 py-3">
                                         <span class="lg:text-2xl">Tseltal</span>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-4 py-3">
                                         <span class="lg:text-2xl">Español</span>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-4 py-3">
                                         <span class="lg:text-2xl">Audio</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($palabras as $palabra)
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                                        data-id="{{ $palabra->id }}">
-                                        <td class="px-6 py-4">
-                                            <span class="lg:text-2xl font-bold">{{ $palabra->ortografia }}</span>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span class="lg:text-2xl">{{ $palabra->traduccion }}</span>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center mt-3">
-                                                <audio src="{{ asset('audios/' . $palabra->audio) }}"
-                                                    id="player{{ $palabra->id }}" type="audio/mpeg" preload="auto"></audio>
-
-                                                <button onclick="playAudio('{{ $palabra->id }}')"
-                                                    class="bg-custom_app w-10 h-10 p-2 rounded ml-2 focus:outline-none">
-                                                    <i class="fas fa-play text-white"></i>
-
-                                                </button>
-                                            </div>
-                                        </td>
-
-                                    </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" data-id="{{ $palabra->id }}">
+                                    <td class="px-4 py-4">
+                                        <span class="text-xs sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl font-bold">{{ $palabra->ortografia }}</span>
+                                    </td>
+                                    <td class="px-4 py-4">
+                                        <span class="text-xs sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl">{{ $palabra->traduccion }}</span>
+                                    </td>
+                                    <td class="px-4 py-4">
+                                        <div class="flex items-center mt-1 sm:mt-2 md:mt-3">
+                                            <audio src="{{ asset('audios/' . $palabra->audio) }}" id="player{{ $palabra->id }}" type="audio/mpeg" preload="auto"></audio>
+                                            <button onclick="playAudio('{{ $palabra->id }}')" class="bg-custom_app w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 p-1 sm:p-2 md:p-3 lg:p-4 xl:p-5 rounded ml-2 focus:outline-none">
+                                                <i class="fas fa-play text-white"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+
             </div>
         </div>
+    </div>
+
+    <div class="w-full bottom-0 text-center p-4 bg-white dark:bg-gray-800">
+        @php
+            $companyName = 'DIM3NSOFT';
+            $companyUrl = 'https://dim3nsoft.com.mx/';
+        @endphp
+
+        <x-info-company :companyName="$companyName" :companyUrl="$companyUrl" />
     </div>
 
     <script>

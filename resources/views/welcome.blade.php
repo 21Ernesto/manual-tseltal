@@ -37,8 +37,8 @@
 
         <div class="py-16 px-7 text-center">
             <p>Bienvenidas, bienvenidos a esta página donde se presentan los audios que
-                acompañan el libro impreso Ya jnop
-                tseltal: Manual y gramática pedagógica del tseltal (Polian y Aguilar Méndez 2024). Se trata de un manual de
+                acompañan el libro impreso <span class="italic font-medium">"Ya jnop tseltal: Manual y gramática pedagógica
+                    del tseltal"</span> (Polian y Aguilar Méndez 2024). Se trata de un manual de
                 aprendizaje del idioma maya tseltal, tal como se habla en el pueblo de Guaquitepec, municipio de Chilón,
                 Chiapas, México. Su objetivo es alcanzar un nivel intermedio, suficiente para sostener conversaciones
                 simples en tseltal y comprender las estructuras básicas del idioma. Sus 20 lecciones más los anexos,
@@ -53,9 +53,16 @@
 
             <p class="mt-7">
                 Le invitamos a conocer nuestros otros trabajos sobre el idioma tseltal en la siguiente página:
-                <a href="https://tseltal.aldelim.org/."><span class="text-blue-500">Ir diccionario Tseltal</span></a>
+                <a href="https://tseltal.aldelim.org/." target="_blank" ><span class="text-blue-500">Tseltal</span></a>
             </p>
         </div>
+    </div>
+    <div class="fixed w-full bottom-0 text-center p-4 bg-white dark:bg-gray-800">
+        @php
+            $companyName = 'DIM3NSOFT';
+            $companyUrl = 'https://dim3nsoft.com.mx/';
+        @endphp
 
+        <x-info-company :companyName="$companyName" :companyUrl="$companyUrl" />
     </div>
 @endsection
